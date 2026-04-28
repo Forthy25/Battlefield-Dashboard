@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= currentUser.username %>'s Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/modal.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Battlefield Stats Dashboard<br>from <span class="orange"><%= currentUser.username %></span></h1>
+        <div class="buttons">
+          <button id="addMatchBtn">+ Add Match</button>
+          <% if (currentUser.role === "admin") { %>
+            <a href="/admin">Admin Panel</a>
+          <% } %>
+          <a href="/logout">Logout</a>
+        </div>
+      </header>
+
+      <main class="dashboard">
+        <div class="card">
+          <h2>📊 Overall KD-Ratio</h2>
+          <p class="<%= kdRatio >= 1 ? 'green' : 'red' %>">
+            <%= kdRatio >= 1 ? '▲' : '▼' %> <%= kdRatio %>
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>🏆 Win Rate</h2>
+          <p class="<%= winRate >= 50 ? 'green' : 'red' %>">
+            <%= winRate >= 50 ? '▲' : '▼' %> <%= winRate %>%
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>⭐ Average Score</h2>
+          <p class="<%= averageScore >= 10000 ? 'green' : 'red' %>">
+            <%= averageScore >= 10000 ? '▲' : '▼' %> <%= averageScore %>
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>🎮 Games Played</h2>
+          <p>
+            <%= gamesPlayed %>
+          </p>
+        </div>
+
+        <div class="card recent">
+          <h2>📈 Recent Performance</h2>
+          <div class="flexbox">
+            <div>
+              <h3>KD-Ratio</h3>
+              <p class="<%= recentKdRatio >= 1 ? 'green' : 'red' %>">
+                <%= recentKdRatio >= 1 ? '▲' : '▼' %> <%= recentKdRatio %>
+              </p>
+            </div>
+            <div>
+              <h3>Win Rate</h3>
+              <p class="<%= recentWinRate >= 50 ? 'green' : 'red' %>">
+                <%= recentWinRate >= 50 ? '▲' : '▼' %> <%= recentWinRate %>%
+              </p>
+            </div>
+            <div>
+              <h3>Avg Score</h3>
+              <p class="<%= recentAverageScore >= 10000 ? 'green' : 'red' %>">
+                <%= recentAverageScore >= 10000 ? '▲' : '▼' %> <%= recentAverageScore %>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card graph">
+          <h2>📈 Performance Trend</h2>
+          <canvas id="KdChart" height="400px" width="800px"></canvas>
+        </div>
+
+        <div class="card maps">
+
+          <h2>🗺️ Top Maps (K/D)</h2>
+          <ul class="flexbox">
+            <% topMaps.forEach(map => { %>
+              <li>
+                <h3><%= map.map %></h3>
+                <p class="<%= map.kdRatio >= 1 ? 'green' : 'red' %>">
+                  <%= map.kdRatio >= 1 ? '▲' : '▼' %> <%= map.kdRatio %>
+                </p>
+                <p class="matches-played">
+                  <%= map.matchCount %> Matches
+                </p>
+              </li>
+            <% }) %>
+          </ul>
+
+        </div>
+
+        <div class="card matches">
+          <h2>🎮 Recent Matches</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Map</th>
+                <th>Mode</th>
+                <th>Result</th>
+                <th>Score</th>
+                <th>Kills</th>
+                <th>Deaths</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% recentMatches.forEach(match => { %>
+                <tr>
+                  <td><%= match.map %></td>
+                  <td><%= match.mode %></td>
+                  <td class="<%= match.win ? 'green' : 'red' %>">
+                    <%= match.win ? "Win" : "Loss" %>
+                  </td>
+                  <td><%= match.score %></td>
+                  <td><%= match.kills %></td>
+                  <td><%= match.deaths %></td>
+                  <td>
+                    <button class="editMatchBtn" data-id="<%= match._id %>">Change</button>
+                    <button class="deleteMatchBtn" data-id="<%= match._id %>">Delete</button>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </main>
+      <footer>Practise by @Forthy</footer>
+    </div>
+
+    <%- include("../partials/addMatchModal") %>
+    <%- include("../partials/deleteMatchModal") %>
+    <%- include("../partials/editMatchModal") %>
+
+    <script src="/js/dashboard.js"></script>
+    <script src="/js/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      // Übergibt die KD-Graph-Daten an das Frontend
+      const kdGraphData = JSON.parse('<%- JSON.stringify(kdGraphData || []) %>');
+    </script>
+  </body>
+</html>

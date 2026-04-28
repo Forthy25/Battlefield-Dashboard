@@ -1,0 +1,76 @@
+<div id="editMatchModal" class="modal">
+  <div class="modal-content">
+    <span id="closeEditModalBtn" class="close">&times;</span>
+    <h2>Match bearbeiten</h2>
+
+    <form id="editMatchForm">
+      <label for="editMap">Map:</label>
+      <select id="editMap" name="map" required>
+        <option value="">Select Map</option>
+        <option value="Contaminated">Contaminated</option>
+        <option value="Operation Firestorm">Operation Firestorm</option>
+        <option value="Eastwood">Eastwood</option>
+        <option value="Mirak Valley">Mirak Valley</option>
+        <option value="Iberian Offensive">Iberian Offensive</option>
+        <option value="Manhattan Bridge">Manhattan Bridge</option>
+        <option value="Liberation Peak">Liberation Peak</option>
+        <option value="Siege of Kairo">Siege of Kairo</option>
+      </select>
+
+      <label for="editMode">Mode:</label>
+      <select id="editMode" name="mode" required>
+        <option value="">Select Mode</option>
+        <option value="conquest">Conquest</option>
+        <option value="escalation">Escalation</option>
+        <option value="team deathmatch">Team Deathmatch</option>
+        <option value="breakthrough">Breakthrough</option>
+        <option value="rush">Rush</option>
+      </select>
+
+      <label for="editWin">Win:</label>
+      <select id="editWin" name="win" required>
+        <option value="">Select</option>
+        <option value="true">Win</option>
+        <option value="false">Loss</option>
+      </select>
+
+      <label for="editScore">Score:</label>
+      <input
+        type="number"
+        id="editScore"
+        name="score"
+        min="0"
+        max="20000"
+        required
+      />
+
+      <div class="row">
+        <div class="input-group">
+          <label for="editKills">Kills:</label>
+          <input
+            type="number"
+            id="editKills"
+            name="kills"
+            min="0"
+            max="100"
+            required
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="editDeaths">Deaths:</label>
+          <input
+            type="number"
+            id="editDeaths"
+            name="deaths"
+            min="0"
+            max="100"
+            required
+          />
+        </div>
+      </div>
+
+      <button type="submit">Speichern</button>
+    </form>
+  </div>
+</div>

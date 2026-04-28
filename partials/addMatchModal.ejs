@@ -1,0 +1,74 @@
+<div id="addMatchModal" class="modal">
+  <div class="modal-content">
+    <span id="closeModalBtn" class="close">&times;</span>
+    <h2>Neues Match hinzufügen</h2>
+    <form id="addMatchForm">
+      <label for="map">Map:</label>
+      <select id="map" name="map" required>
+        <option value="">Select Map</option>
+        <option value="Contaminated">Contaminated</option>
+        <option value="Operation Firestorm">Operation Firestorm</option>
+        <option value="Eastwood">Eastwood</option>
+        <option value="Mirak Valley">Mirak Valley</option>
+        <option value="Iberian Offensive">Iberian Offensive</option>
+        <option value="Manhattan Bridge">Manhattan Bridge</option>
+        <option value="Liberation Peak">Liberation Peak</option>
+        <option value="Siege of Kairo">Siege of Kairo</option>
+      </select>
+
+      <label for="mode">Mode:</label>
+      <select id="mode" name="mode" required>
+        <option value="">Select Mode</option>
+        <option value="conquest">Conquest</option>
+        <option value="escalation">Escalation</option>
+        <option value="team deathmatch">Team Deathmatch</option>
+        <option value="breakthrough">Breakthrough</option>
+        <option value="rush">Rush</option>
+      </select>
+
+      <label for="win">Win:</label>
+      <select id="win" name="win" required>
+        <option value="">Select</option>
+        <option value="true">Win</option>
+        <option value="false">Loss</option>
+      </select>
+
+      <label for="score">Score:</label>
+      <input
+        type="number"
+        id="score"
+        name="score"
+        min="0"
+        max="20000"
+        required
+      />
+
+      <div class="row">
+        <div class="input-group">
+          <label for="kills">Kills:</label>
+          <input
+            type="number"
+            id="kills"
+            name="kills"
+            min="0"
+            max="100"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <label for="deaths">Deaths:</label>
+          <input
+            type="number"
+            id="deaths"
+            name="deaths"
+            min="0"
+            max="100"
+            required
+          />
+        </div>
+      </div>
+
+      <button type="submit">Hinzufügen</button>
+    </form>
+  </div>
+</div>

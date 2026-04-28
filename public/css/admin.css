@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  margin: 20px 3% 0px 3%;
+  background-color: #2c2c2c;
+  background-image: url(../img/background-bw.png);
+  background-size: cover;
+  background-position: top;
+}
+
+.container {
+  width: 1000px;
+  margin: auto;
+  font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  color: white;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 55px;
+}
+
+.buttons button {
+  width: 150px;
+  height: 100%;
+  background: linear-gradient(45deg, #ff4c4c, #f3621f);
+  color: aliceblue;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.buttons a {
+  min-width: 150px;
+  padding: 0 20px;
+  height: 100%;
+  background: linear-gradient(45deg, #ff4c4c, #f3621f);
+  color: aliceblue;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    135deg,
+    rgba(29, 29, 29, 0.85) 0%,
+    rgba(12, 12, 12, 0.85) 100%
+  );
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 20px;
+  color: white;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#noResults {
+  margin: 0;
+  font-size: 14px;
+  text-align: center;
+}
+
+#searchInput {
+  flex: 1;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.table-container {
+  height: 800px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.table-container button {
+  padding: 8px 16px;
+  background: linear-gradient(45deg, #4ce4ff, #1f94f3);
+  color: #0c0c0c;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+td:last-child,
+th:last-child {
+  text-align: right;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table thead {
+  position: sticky;
+  top: 0;
+  background-color: #0e0e0e;
+  z-index: 1;
+}
+
+table th {
+  text-align: left;
+  padding: 10px;
+  background: #0e0e0e;
+  color: white;
+}
+
+table td {
+  padding: 10px;
+  color: white;
+  border-bottom: 1px solid #ddd;
+}
+
+table tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+footer {
+  text-align: center;
+  color: #030303;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer p {
+  background-color: lightgrey;
+  padding: 10px;
+  border-radius: 40px;
+}
