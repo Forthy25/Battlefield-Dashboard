@@ -4,8 +4,13 @@ import { generateMockMatches } from "../sampleData.js";
 
 const router = express.Router();
 
-// Dashboard home - Demo with mock data
-router.get("/", async (req, res) => {
+// Root - Login showcase
+router.get("/", (req, res) => {
+  res.render("index");
+});
+
+// Demo with mock data
+router.get("/demo", async (req, res) => {
   try {
     const mockMatches = await generateMockMatches(150);
     const overallStats = calculateStats(mockMatches);
@@ -14,7 +19,7 @@ router.get("/", async (req, res) => {
     const topMaps = topMapsKD(mockMatches);
     const kdGraphData = graphKD(mockMatches.slice(0, 25).reverse());
 
-    res.render("index", {
+    res.render("dashboard", {
       currentUser: { username: "Demo User" },
       kdRatio: overallStats.kdRatio,
       winRate: overallStats.winRate,
